@@ -1,0 +1,12 @@
+.fixed__top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.filter__list {
+    background: white;
+
+    height: 54px;
+    max-height: 54px;
+}
