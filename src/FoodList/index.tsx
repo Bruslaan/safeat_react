@@ -6,7 +6,7 @@ import testImg from '../assets/test2.jpeg'
 
 
 const Image = <img className="food_list_item__img" src={testImg} alt="" />
-const MyItem = ({ children }) => (
+const MyItem = () => (
     <div className="item">
         {/* {children} */}
         {Image}
@@ -29,43 +29,43 @@ const MyItem = ({ children }) => (
 export const FoodList = () => (
     <SnapList direction="vertical" className="list__container">
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
         <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-            <MyItem>Item 0</MyItem>
+            <MyItem></MyItem>
         </SnapItem>
     </SnapList>
 );

@@ -13,7 +13,14 @@ body {
 
 h1 {
   font-size: large;
-  color: rgb(26, 0, 0)
+  color:
+    #161e2e;
+    font-weight: bold;
+}
+
+h1 {
+  font-size: 1em;
+  margin: 0.67em 0;
 }
 
 p {
