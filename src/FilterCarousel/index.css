@@ -19,8 +19,25 @@
 
 .filter__item {
     background: white;
-    border: solid 1px var(--border-color);
-    border-radius: 10px;
+    /* border: solid 1px var(--border-color); */
+    /* border-radius: 10px; */
     height: 54px;
-    width: 54px;
+    /* width: 54px; */
+    font-size: smaller;
+    cursor: pointer;
+}
+
+.filter__img {
+    color: red;
+    height: 40px;
+}
+
+.icon__name{
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
 }

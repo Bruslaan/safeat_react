@@ -1,11 +1,18 @@
 import * as React from 'react';
 import './index.css'
+import icon from '../assets/food.svg'
 
 import { SnapList, SnapItem } from 'react-snaplist-carousel';
-
+const Icon = <img className="filter__img" src={icon} alt="" />
 const MyItem = ({ children }) => (
     <div className="filter__item">
         {/* {children} */}
+        <div className="icon__name"> 
+            {Icon}
+            <p>Döner Gerichte</p>
+        </div>
+       
+
     </div>
 );
 

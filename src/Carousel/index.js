@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './index.css'
+import Doener from '../assets/test.jpeg'
 import {
   SnapList,
   SnapItem,
@@ -9,12 +10,16 @@ import {
 
 } from 'react-snaplist-carousel';
 
+const Logo = <img className="item__img" src={Doener}  alt="" />
+
 const MyItem = ({ onClick, children, visible }) => (
   <div
     className="carusel__item"
     onClick={onClick}
   >
+   {Logo}
     {children}
+ 
   </div>
 );
 
@@ -28,9 +33,10 @@ export const Carousel = () => {
   const goToSnapItem = useScroll({ ref: snapList });
   return (
     <SnapList direction="horizontal" ref={snapList}>
-      <SnapItem margin={{ left: '8vw', right: '15px' }} snapAlign="center">
+      <SnapItem margin={{ left: '0', right: '15px' }} snapAlign="center">
         <MyItem onClick={() => goToSnapItem(0)} visible={visible === 0}>
           Item 0
+          
         </MyItem>
       </SnapItem>
       <SnapItem margin={{ left: '15px', right: '15px' }} snapAlign="center">
