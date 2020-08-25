@@ -14,6 +14,7 @@ export const MainSection: React.FC<Props> = (props: Props) => {
         <div className="main__container">
             <div className="left__section">
                 {props.leftItems?.map(item => item)}
+
             </div>
             <div className="right__section disable_on_small">
                 {props.rightItems?.map(item => item)}

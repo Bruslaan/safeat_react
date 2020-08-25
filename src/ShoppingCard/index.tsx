@@ -1,7 +1,8 @@
 import React from 'react'
+import { MyButton } from '../Button'
 import './index.css'
 
-import {NumberInput} from '../NumberInput'
+import { NumberInput } from '../NumberInput'
 
 
 
@@ -23,6 +24,19 @@ const ListItem: React.FC = () => {
 }
 
 
+const SumComponent: React.FC = () => {
+
+    return (
+        <div className="shoppingcad__sum">
+
+            <h1 className="shoppingcard__text">Summe:</h1>
+            <h1 className="shoppingcard__text">18,99 €</h1>
+
+        </div>
+    )
+}
+
+
 
 export const ShoppingCard = () => {
     return (
@@ -32,6 +46,11 @@ export const ShoppingCard = () => {
             <ListItem />
             <ListItem />
             <ListItem />
+
+            <SumComponent />
+
+
+            <MyButton />
 
 
         </div>

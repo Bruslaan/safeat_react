@@ -10,11 +10,21 @@
     /* height: 54px; */
     height: auto;
     padding: 10px;
-    border-top: solid 1px var(--border-color);
+    /* border: solid 1px var(--border-color); */
     border-bottom: solid 1px var(--border-color);
+    border-top: solid 1px var(--border-color);
     /* margin: 10px; */
     /* border-radius: var(--border-radius); */
     /* max-height: 54px; */
+}
+
+
+@media (min-width:600px){
+    .filter__list {
+        border: solid 1px var(--border-color);
+        /* border-radius: var(--border-radius); */
+    }
+ 
 }
 
 .filter__item {

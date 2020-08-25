@@ -6,6 +6,7 @@ import { Carousel } from './Carousel'
 import { FilterCarousel } from './FilterCarousel'
 import { FoodList } from './FoodList'
 import { ShoppingCard } from './ShoppingCard'
+import { MyButton } from './Button'
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
@@ -25,6 +26,11 @@ function App() {
             <ShoppingCard key="1" />
           ]}
         />
+
+        <div className="sticky__button disable_on_desktop">
+          <MyButton />
+        </div>
+
       </div>
 
     </div>
