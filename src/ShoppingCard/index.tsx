@@ -55,7 +55,7 @@ export const ShoppingCard = () => {
 
 
 
-            <div className="sticky__button sticky__footer">
+            <div className="sticky__button_center sticky__footer">
                 <SumComponent />
                 <MyButton />
             </div>

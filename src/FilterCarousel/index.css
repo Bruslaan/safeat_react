@@ -4,8 +4,10 @@
     z-index: 10;
 }
 
+
+
 .filter__list {
-    background: white;
+    background: var(--background-color);
 
     /* height: 54px; */
     height: auto;
@@ -19,20 +21,21 @@
 }
 
 
-@media (min-width:600px){
+@media (min-width:600px) {
     .filter__list {
         border: solid 1px var(--border-color);
         /* border-radius: var(--border-radius); */
     }
- 
+
 }
 
 .filter__item {
     background: white;
-    /* border: solid 1px var(--border-color); */
-    /* border-radius: 10px; */
+    border: solid 1px var(--border-color);
+    border-radius: 10px;
     height: 54px;
     /* width: 54px; */
+    padding:10px;
     font-size: smaller;
     cursor: pointer;
 }
@@ -42,12 +45,12 @@
     height: 40px;
 }
 
-.icon__name{
+.icon__name {
 
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
+
 }

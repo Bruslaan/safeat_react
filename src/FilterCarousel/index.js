@@ -7,16 +7,17 @@ const Icon = <img className="filter__img" src={icon} alt="" />
 const MyItem = ({ children }) => (
     <div className="filter__item">
         {/* {children} */}
-        <div className="icon__name"> 
+        <div className="icon__name">
             {Icon}
             <p>Döner Gerichte</p>
         </div>
-       
+
 
     </div>
 );
 
 export const FilterCarousel = () => (
+
     <SnapList className="fixed__top filter__list"  >
         <SnapItem margin={{ left: '0px', right: '15px' }} snapAlign="center">
             <MyItem>Item 0</MyItem>
@@ -49,4 +50,6 @@ export const FilterCarousel = () => (
             <MyItem>Item 4</MyItem>
         </SnapItem>
     </SnapList>
+
+
 );

@@ -38,7 +38,7 @@ p {
   --content-width: 975px;
   --border-radius: 15px;
   --border-color: rgb(219, 219, 219);
-  --background-color: rgb(235, 235, 255);
+  --background-color: rgb(244, 244, 244);
   ;
 }
 
@@ -90,6 +90,21 @@ p {
 .sticky__button {
   position: sticky;
   bottom: 0;
+  right: 0;
+  width: 30%;
+  padding: 10px;
+  /* max-width: 400px; */
+  margin-left: auto;
+  z-index: 100;
+  box-sizing: border-box;
+
+  /* padding-bottom: env(safe-area-inset-bottom); */
+}
+
+.sticky__button_center {
+  position: sticky;
+  bottom: 0;
+
   width: 100%;
   padding: 10px;
   max-width: 400px;
@@ -97,6 +112,4 @@ p {
   z-index: 100;
   box-sizing: border-box;
 
-  /* padding-bottom: env(safe-area-inset-bottom); */
 }
-

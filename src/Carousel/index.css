@@ -4,11 +4,30 @@
     width: 300px;
     border: solid 1px var(--border-color);
     border-radius: var(--border-radius);
-    overflow: hidden
+    overflow: hidden;
+    position: relative;
 }
 
 .item__img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.bangedot {
+    position: absolute;
+    bottom: 0px;
+    left:0;
+    right: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 50px;
+
+    /* color: #e9e3e3; */
+    background: rgba(0, 0, 0, 0.6);
+    /* border: 40px; */
+}
+
+.bangedot>h1 {
+    color: white
 }

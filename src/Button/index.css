@@ -15,11 +15,13 @@
 
 }
 
+
+
 .mein__button__badge{
     position: absolute;
     top:-10px;
     right:10px;
-    background: rgb(113, 113, 233);
+    background: rgb(0, 0, 0);
     color:white;
     border-radius: 100%;
     width: 30px;
@@ -27,4 +29,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.warenkorb__icon{
+    height:30px;
+    width: 30px;
+    color:white;
 }

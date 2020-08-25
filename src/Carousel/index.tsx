@@ -10,14 +10,31 @@ import {
 
 } from 'react-snaplist-carousel';
 
+
+
+interface Props{
+  onClick?: ()=>void
+  visible?: boolean
+}
+
+
+
 const Logo = <img className="item__img" src={Doener}  alt="" />
 
-const MyItem = ({ onClick, children, visible }) => (
+const MyItem:React.FC<Props> = ({ onClick, children, visible }) => (
   <div
     className="carusel__item"
     onClick={onClick}
   >
+
    {Logo}
+   <div className="bangedot">
+    <h1>NEW DEAL Super Bangedot <span>30,99 €</span></h1>
+   </div>
+
+
+
+   
     {children}
  
   </div>
