@@ -20,7 +20,7 @@ h1 {
   font-size: large;
   color:
     #161e2e;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 h1 {
@@ -38,7 +38,7 @@ p {
   --content-width: 975px;
   --border-radius: 15px;
   --border-color: rgb(219, 219, 219);
-  --background-color:rgb(235, 235, 255);
+  --background-color: rgb(235, 235, 255);
   ;
 }
 
@@ -87,14 +87,16 @@ p {
 }
 
 
-.sticky__button{
+.sticky__button {
   position: sticky;
-  bottom:0;
+  bottom: 0;
   width: 100%;
-  padding:10px;
+  padding: 10px;
   max-width: 400px;
-  margin:auto;
+  margin: auto;
   z-index: 100;
   box-sizing: border-box;
+
   /* padding-bottom: env(safe-area-inset-bottom); */
 }
+

@@ -33,7 +33,7 @@ export const Carousel = () => {
   const goToSnapItem = useScroll({ ref: snapList });
   return (
     <SnapList direction="horizontal" ref={snapList}>
-      <SnapItem margin={{ left: '0', right: '15px' }} snapAlign="center">
+      <SnapItem margin={{ left: '10vw', right: '15px' }} snapAlign="center">
         <MyItem onClick={() => goToSnapItem(0)} visible={visible === 0}>
           Item 0
           

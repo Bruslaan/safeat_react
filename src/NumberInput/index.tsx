@@ -6,7 +6,7 @@ export const NumberInput: React.FC = () => {
 
         <div className="wrapper">
             <button className="plusminus" >-</button>
-            <input type="number" className="num" value="1" onChange={() => console.log("hallo")} />
+            <span>1</span>
             <button className="plusminus add" >+</button>
         </div>
 

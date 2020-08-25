@@ -1,7 +1,12 @@
 import React from 'react'
 import './index.css'
-export const MyButton = () => {
+
+interface Props {
+    clickHandler?: () => void
+}
+
+export const MyButton: React.FC<Props> = ({clickHandler}) => {
     return (
-    <button className="mein__button">Weiter <span className="mein__button__badge">3</span></button>
+        <button className="mein__button" onClick={clickHandler}>Warenkorb <span className="mein__button__badge">3</span></button>
     )
 }

@@ -7,9 +7,20 @@ import { FilterCarousel } from './FilterCarousel'
 import { FoodList } from './FoodList'
 import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
+import Drawer from "react-bottom-drawer";
+
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const onClose = React.useCallback(() => {
+    setIsVisible(false);
+  }, []);
+
+  const openModal = () => setIsVisible(true)
+
+
 
   return (
     <div className="App">
@@ -27,8 +38,15 @@ function App() {
           ]}
         />
 
-        <div className="sticky__button disable_on_desktop">
-          <MyButton />
+        <Drawer
+          isVisible={isVisible}
+          onClose={onClose}
+        >
+          <ShoppingCard />
+
+        </Drawer>
+        <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !isVisible ? 'block' : 'none' }}>
+          <MyButton clickHandler={openModal} />
         </div>
 
       </div>

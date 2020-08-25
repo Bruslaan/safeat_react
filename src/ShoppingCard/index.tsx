@@ -46,11 +46,20 @@ export const ShoppingCard = () => {
             <ListItem />
             <ListItem />
             <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
 
-            <SumComponent />
 
 
-            <MyButton />
+
+
+            <div className="sticky__button sticky__footer">
+                <SumComponent />
+                <MyButton />
+            </div>
+
 
 
         </div>
