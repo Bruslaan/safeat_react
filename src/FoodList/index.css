@@ -1,0 +1,16 @@
+.item {
+    /* background: gray; */
+    border: solid 1px var(--border-color);
+    border-radius: var(--border-radius);
+    background: white;
+    direction: flex;
+    width: 100%;
+    height: 250px;
+}
+
+@media(max-width:800px){
+
+    .list__container{
+        margin:10px;
+    }
+}

@@ -4,8 +4,8 @@ import './index.css'
 import { SnapList, SnapItem } from 'react-snaplist-carousel';
 
 const MyItem = ({ children }) => (
-    <div style={{ width: '50px', background: '#cccccc' }}>
-        {children}
+    <div className="filter__item">
+        {/* {children} */}
     </div>
 );
 

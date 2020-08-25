@@ -7,6 +7,20 @@
 .filter__list {
     background: white;
 
+    /* height: 54px; */
+    height: auto;
+    padding: 10px;
+    border-top: solid 1px var(--border-color);
+    border-bottom: solid 1px var(--border-color);
+    /* margin: 10px; */
+    /* border-radius: var(--border-radius); */
+    /* max-height: 54px; */
+}
+
+.filter__item {
+    background: white;
+    border: solid 1px var(--border-color);
+    border-radius: 10px;
     height: 54px;
-    max-height: 54px;
+    width: 54px;
 }

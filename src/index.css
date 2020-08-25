@@ -13,6 +13,7 @@ body {
 :root {
   --background: #f4f5f7;
   --content-width: 975px;
+  --border-radius:5px;
   --border-color: rgb(219, 219, 219);
   --background-color:
       #fafafa;

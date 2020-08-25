@@ -10,7 +10,7 @@
 
 
 .right__section {
-  max-width: 293px;
+  max-width: 350px;
   width: 100%;
   top: 0px;
   margin-left:auto;
@@ -18,8 +18,10 @@
   /* right: calc(50% - 475px); */
   right:0;
   width: 100%;
-  background: green;
+  /* background: green; */
+  /* border: solid 1px var(--border-color); */
   height: 100vh;
+  /* border-radius: 20px; */
 
 }
 

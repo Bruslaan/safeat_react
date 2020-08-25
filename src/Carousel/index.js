@@ -1,40 +1,34 @@
 import React, { useRef } from 'react';
- 
+import './index.css'
 import {
   SnapList,
   SnapItem,
   useVisibleElements,
   useScroll,
-  
+
 
 } from 'react-snaplist-carousel';
- 
+
 const MyItem = ({ onClick, children, visible }) => (
   <div
-    style={{
-      width: '90vw',
-      maxWidth: '300px',
-      height: 200,
-      background: visible ? '#bce6fe' : '#cccccc',
-      cursor: visible ? 'default' : 'pointer',
-    }}
+    className="carusel__item"
     onClick={onClick}
   >
     {children}
   </div>
 );
- 
+
 export const Carousel = () => {
   const snapList = useRef(null);
- 
+
   const visible = useVisibleElements(
     { debounce: 10, ref: snapList },
     ([element]) => element,
   );
-  const goToSnapItem = useScroll({ ref: snapList }); 
+  const goToSnapItem = useScroll({ ref: snapList });
   return (
     <SnapList direction="horizontal" ref={snapList}>
-      <SnapItem margin={{ left: '20vw', right: '15px' }} snapAlign="center">
+      <SnapItem margin={{ left: '8vw', right: '15px' }} snapAlign="center">
         <MyItem onClick={() => goToSnapItem(0)} visible={visible === 0}>
           Item 0
         </MyItem>
@@ -54,7 +48,7 @@ export const Carousel = () => {
           Item 3
         </MyItem>
       </SnapItem>
-      <SnapItem margin={{ left: '15px', right: '20vw' }} snapAlign="center">
+      <SnapItem margin={{ left: '15px', right: '10vw' }} snapAlign="center">
         <MyItem onClick={() => goToSnapItem(4)} visible={visible === 4}>
           Item 4
         </MyItem>

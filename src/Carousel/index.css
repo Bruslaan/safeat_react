@@ -1,0 +1,8 @@
+.carusel__item {
+    background: white;
+    height: 200px;
+    width: 300px;
+    border: solid 1px var(--border-color);
+    border-radius: var(--border-radius)
+
+}

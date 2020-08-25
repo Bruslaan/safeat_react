@@ -1,4 +1,8 @@
 .shopping__card {
-    background: green;
-    height: 100vh;
+    padding-left: 10px;
+    background: white;
+    height: 100%;
+    border: solid 1px var(--border-color);
+    /* height: 100vh; */
+    border-radius: var(--border-radius);
 }
