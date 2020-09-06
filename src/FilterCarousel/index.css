@@ -34,7 +34,7 @@
     border: solid 1px var(--border-color);
     border-radius: 10px;
     height: 54px;
-    /* width: 54px; */
+    min-width: 54px;
     padding:10px;
     font-size: smaller;
     cursor: pointer;
@@ -43,6 +43,7 @@
 .filter__img {
     color: red;
     height: 40px;
+    margin-bottom:5px;
 }
 
 .icon__name {

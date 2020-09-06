@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBar } from './Nav'
 import logo from './assets/logo/logoOrange.png'
 import { MainSection } from './MainSection'
@@ -8,11 +8,14 @@ import { FoodList } from './FoodList'
 import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
 import Drawer from "react-bottom-drawer";
+import { db } from './firebase'
 
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [foodList, setfoodList] = useState([])
+  const [categories, setCategories] = useState([])
 
   const onClose = React.useCallback(() => {
     setIsVisible(false);
@@ -20,6 +23,59 @@ function App() {
 
   const openModal = () => setIsVisible(true)
 
+
+
+// fetch data if filter changes
+  useEffect(() => {
+
+    const fetchFoodList = async () => {
+
+      try {
+        const docs = await db.collection("test").get()
+        let data: any = []
+        docs.forEach(doc => {
+
+          data.push(doc.data())
+
+        })
+        setfoodList(data)
+
+      } catch (error) {
+        console.log(error, "Error")
+      }
+    }
+
+    fetchFoodList()
+
+    // return () => {
+    //   cleanup
+    // }
+  }, [foodList])
+
+// get categories
+  useEffect(() => {
+
+    const fetchCategorieList = async () => {
+
+      try {
+        const docs = await db.collection("category").get()
+        let data: any = []
+        docs.forEach(doc => {
+
+          data.push(doc.data())
+
+        })
+        setCategories(data)
+
+      } catch (error) {
+        console.log(error, "Error")
+      }
+    }
+
+    fetchCategorieList()
+
+
+  }, [])
 
 
   return (
@@ -30,8 +86,8 @@ function App() {
         <MainSection
           leftItems={[
             <Carousel key="1" />,
-            <FilterCarousel key="2" />,
-            <FoodList key="3" />
+            <FilterCarousel filterList={categories} key="2" />,
+            <FoodList foodList={foodList} key="3" />
           ]}
           rightItems={[
             <ShoppingCard key="1" />

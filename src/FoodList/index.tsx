@@ -1,77 +1,62 @@
 import * as React from 'react';
 import './index.css'
 import { SnapList, SnapItem } from 'react-snaplist-carousel';
-import testImg from '../assets/test2.jpeg'
 
 
-
-const Image = <img className="food_list_item__img" src={testImg} alt="" />
-interface Props {
+interface FoodCardProps {
     onClick?: () => void
+    imgUrl?: number
+    food: Food
 }
-const MyItem: React.FC<Props> = ({ onClick }) => (
-    <div className="item" onClick={onClick}>
-        {/* {children} */}
-        {Image}
-        <div className="menu__information">
 
-            <div>
-                <h1>Pizza des Pastas Sohn</h1>
-                <p>Beschreibung des Gerichts</p>
+interface Food {
+
+    title: String
+    price: number
+    imgURL?: String
+    description: String
+
+}
+
+
+
+const MyItem: React.FC<FoodCardProps> = ({ onClick, imgUrl, food }) => {
+    const src_url = "http://lorempixel.com/600/600/food/" + imgUrl
+    const Image = <img className="food_list_item__img" src={src_url} alt="" />
+    return (
+        <div className="item" onClick={onClick}>
+            {/* {children} */}
+            {imgUrl ? Image : ""}
+            <div className="menu__information">
+
+                <div>
+                    <h1>{food.title}</h1>
+                    <p>{food.description}</p>
+                </div>
+                <span>{food.price} €</span>
 
             </div>
 
-
-            <span>18,99 Euro</span>
-
         </div>
+    );
+}
 
-    </div>
-);
 
-export const FoodList = () => {
+interface FoodListProps {
+    foodList: Array<Food>
+}
 
+export const FoodList: React.FC<FoodListProps> = ({ foodList }) => {
     return (
         <SnapList direction="vertical" className="list__container">
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem ></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
-            <SnapItem margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                <MyItem></MyItem>
-            </SnapItem>
+
+            {foodList.map((food, index) => {
+                return (
+                    <SnapItem key={index} margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
+                        <MyItem food={food} imgUrl={index+1}></MyItem>
+                    </SnapItem>
+                )
+            })}
         </SnapList>
     );
 }
