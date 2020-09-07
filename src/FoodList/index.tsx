@@ -48,7 +48,7 @@ interface FoodListProps {
 export const FoodList: React.FC<FoodListProps> = ({ foodList }) => {
     return (
         <SnapList direction="vertical" className="list__container">
-
+            
             {foodList.map((food, index) => {
                 return (
                     <SnapItem key={index} margin={{ top: '15px', bottom: '15px' }} snapAlign="center">

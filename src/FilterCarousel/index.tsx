@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css'
 
-import { SnapList, SnapItem } from 'react-snaplist-carousel';
+import { SnapList, SnapItem, useVisibleElements, useScroll } from 'react-snaplist-carousel';
 
 
 
@@ -19,16 +19,27 @@ interface FilterListProps {
 
 export const FilterCarousel: React.FC<FilterListProps> = ({ filterList, onActiveChange }) => {
 
+
+    const snapList = React.useRef(null);
+
+    const visible = useVisibleElements(
+      { debounce: 10, ref: snapList },
+      ([element]) => element,
+    );
+    const goToSnapItem = useScroll({ ref: snapList });
+
+
     const [activeTab, setactiveTab] = React.useState(-1)
     const emmitChange: any = (index: number) => {
         setactiveTab(index)
+        goToSnapItem(index+1)
         onActiveChange(index)
     }
 
     return (
-        <SnapList direction="horizontal" className="fixed__top filter__list"  >
+        <SnapList direction="horizontal" className="fixed__top filter__list" ref={snapList} >
             <SnapItem key={-1} margin={{ left: '0px', right: '15px' }} snapAlign="center">
-                <div className="filter__item " onClick={() => emmitChange(-1)}>
+                <div className="filter__item " onClick={() => emmitChange(-1)} >
                     {/* {children} */}
                     <div className="icon__name">
                         {/* {Icon} */}

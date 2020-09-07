@@ -13,18 +13,19 @@ import { db } from './firebase'
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
-  const [isVisible, setIsVisible] = useState(false);
+  const [drawerIsVisible, setdrawerIsVisible] = useState(false);
   const [foodList, setfoodList] = useState([])
   const [foodListFilter, setFilterFoodlist] = useState([])
   const [categories, setCategories] = useState([])
   const [activeCategorie, setactiveCategorie] = useState(-1)
 
   const onClose = React.useCallback(() => {
-    setIsVisible(false);
+    setdrawerIsVisible(false);
   }, []);
 
-  const openModal = () => setIsVisible(true)
+  const openModal = () => setdrawerIsVisible(true)
 
+  // filter rezept data if categories change
   useEffect(() => {
     if (activeCategorie === -1) {
       setFilterFoodlist(foodList)
@@ -36,9 +37,8 @@ function App() {
   }, [activeCategorie, foodList, categories])
 
 
-  // fetch data if filter changes
+  // fetch rezept data
   useEffect(() => {
-    console.log("new Fetch veranlasst")
     const fetchFoodList = async () => {
       try {
         const docs = await db.collection("rezepts").where("restaurant", "==", "Kali").get()
@@ -56,9 +56,6 @@ function App() {
 
   // get categories
   useEffect(() => {
-
-
-
     const fetchCategorieList = async () => {
       try {
         const docs = await db.collection("category").where("restaurant", "==", "Kali").get()
@@ -92,13 +89,13 @@ function App() {
         />
 
         <Drawer
-          isVisible={isVisible}
+          isVisible={drawerIsVisible}
           onClose={onClose}
         >
           <ShoppingCard />
 
         </Drawer>
-        <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !isVisible ? 'block' : 'none' }}>
+        <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
           <MyButton clickHandler={openModal} />
         </div>
 

@@ -10,13 +10,11 @@ export const fetchFoodList = async () => {
             docs.forEach(doc => {
 
                 data.push(doc.data())
-                console.log("Food fetched")
-
+        
             })
-            console.log("Food fetched stoli",data)
+          
             resolve(data)
         } catch (error) {
-            console.log(error, "Error")
             reject(error)
         }
     })
