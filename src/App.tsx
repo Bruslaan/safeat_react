@@ -15,7 +15,9 @@ function App() {
   const Logo = <img src={logo} className="logo" alt="" />
   const [isVisible, setIsVisible] = useState(false);
   const [foodList, setfoodList] = useState([])
+  const [foodListFilter, setFilterFoodlist] = useState([])
   const [categories, setCategories] = useState([])
+  const [activeCategorie, setactiveCategorie] = useState(-1)
 
   const onClose = React.useCallback(() => {
     setIsVisible(false);
@@ -23,59 +25,53 @@ function App() {
 
   const openModal = () => setIsVisible(true)
 
-
-
-// fetch data if filter changes
   useEffect(() => {
+    if (activeCategorie === -1) {
+      setFilterFoodlist(foodList)
+    } else {
+      const filteredList = foodList.filter(food => food["category"] === categories[activeCategorie]["name"])
+      setFilterFoodlist(filteredList)
+    }
 
+  }, [activeCategorie, foodList, categories])
+
+
+  // fetch data if filter changes
+  useEffect(() => {
+    console.log("new Fetch veranlasst")
     const fetchFoodList = async () => {
-
       try {
-        const docs = await db.collection("rezepts").where("restaurant","==","Kali").get()
+        const docs = await db.collection("rezepts").where("restaurant", "==", "Kali").get()
         let data: any = []
         docs.forEach(doc => {
-
           data.push(doc.data())
-          console.log("Food fetched")
-
         })
         setfoodList(data)
-
       } catch (error) {
         console.log(error, "Error")
       }
     }
-
     fetchFoodList()
-
-    // return () => {
-    //   cleanup
-    // }
   }, [])
 
-// get categories
+  // get categories
   useEffect(() => {
 
-    const fetchCategorieList = async () => {
 
+
+    const fetchCategorieList = async () => {
       try {
-        const docs = await db.collection("category").where("restaurant","==","Kali").get()
+        const docs = await db.collection("category").where("restaurant", "==", "Kali").get()
         let data: any = []
         docs.forEach(doc => {
-
           data.push(doc.data())
-
         })
         setCategories(data)
-
       } catch (error) {
         console.log(error, "Error")
       }
     }
-
     fetchCategorieList()
-
-
   }, [])
 
 
@@ -87,8 +83,8 @@ function App() {
         <MainSection
           leftItems={[
             <Carousel key="1" />,
-            <FilterCarousel filterList={categories} key="2" />,
-            <FoodList foodList={foodList} key="3" />
+            <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
+            <FoodList foodList={foodListFilter} key="3" />
           ]}
           rightItems={[
             <ShoppingCard key="1" />
