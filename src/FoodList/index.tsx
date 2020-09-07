@@ -34,7 +34,6 @@ const MyItem: React.FC<FoodCardProps> = ({ onClick, imgUrl, food }) => {
                     <p>{food.description}</p>
                 </div>
                 <span>{food.price} €</span>
-
             </div>
 
         </div>

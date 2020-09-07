@@ -33,7 +33,7 @@
     background: white;
     border: solid 1px var(--border-color);
     border-radius: 10px;
-    height: 54px;
+    /* height: 54px; */
     min-width: 54px;
     padding:10px;
     font-size: smaller;

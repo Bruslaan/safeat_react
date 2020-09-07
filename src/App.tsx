@@ -31,11 +31,12 @@ function App() {
     const fetchFoodList = async () => {
 
       try {
-        const docs = await db.collection("test").get()
+        const docs = await db.collection("rezepts").where("restaurant","==","Kali").get()
         let data: any = []
         docs.forEach(doc => {
 
           data.push(doc.data())
+          console.log("Food fetched")
 
         })
         setfoodList(data)
@@ -50,7 +51,7 @@ function App() {
     // return () => {
     //   cleanup
     // }
-  }, [foodList])
+  }, [])
 
 // get categories
   useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
     const fetchCategorieList = async () => {
 
       try {
-        const docs = await db.collection("category").get()
+        const docs = await db.collection("category").where("restaurant","==","Kali").get()
         let data: any = []
         docs.forEach(doc => {
 

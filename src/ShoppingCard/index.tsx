@@ -46,14 +46,7 @@ export const ShoppingCard = () => {
             <ListItem />
             <ListItem />
             <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
-
-
-
-
+       
 
             <div className="sticky__button_center sticky__footer">
                 <SumComponent />
