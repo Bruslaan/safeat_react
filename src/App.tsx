@@ -10,6 +10,7 @@ import { MyButton } from './Button'
 import Drawer from "react-bottom-drawer";
 import { db } from './firebase'
 import CartContextProvider from './Context/shoppingCardStore'
+import { Food } from './Interfaces/interfaces';
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
@@ -43,8 +44,18 @@ function App() {
       try {
         const docs = await db.collection("rezepts").where("restaurant", "==", "Kali").get()
         let data: any = []
-        docs.forEach(doc => {
-          data.push(doc.data())
+        docs.forEach((doc) => {
+
+          const newData: Food = {
+            title: doc.data()["title"],
+            description: doc.data()["description"],
+            price: doc.data()["price"],
+            name: doc.data()["title"],
+            id: doc.id,
+            quantity: 1,
+            category: doc.data()["category"]
+          }
+          data.push(newData)
         })
         setfoodList(data)
       } catch (error) {

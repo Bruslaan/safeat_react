@@ -1,13 +1,19 @@
 import React from 'react'
 import './index.css'
 
-export const NumberInput: React.FC = () => {
+
+interface Props {
+    initialCount: number
+    onChange: (number:number) => void
+}
+
+export const NumberInput: React.FC<Props> = ({ initialCount, onChange }) => {
     return (
 
         <div className="wrapper">
-            <button className="plusminus" >-</button>
-            <span>1</span>
-            <button className="plusminus add" >+</button>
+            <button className="plusminus"onClick={() => onChange(-1)} >-</button>
+            <span>{initialCount}</span>
+            <button className="plusminus add" onClick={() => onChange(1)}>+</button>
         </div>
 
     )

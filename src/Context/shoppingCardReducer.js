@@ -1,5 +1,5 @@
 const Storage = (cartItems) => {
-    localStorage.setItem('cart', JSON.stringify(cartItems.length > 0 ? cartItems: []));
+    localStorage.setItem('cart', JSON.stringify(cartItems.length > 0 ? cartItems : []));
 }
 
 export const sumItems = cartItems => {
@@ -15,9 +15,9 @@ export const CartReducer = (state, action) => {
             if (!state.cartItems.find(item => item.id === action.payload.id)) {
                 state.cartItems.push({
                     ...action.payload,
-                    quantity: 1
+
                 })
-            } 
+            }
 
             return {
                 ...state,
@@ -31,6 +31,7 @@ export const CartReducer = (state, action) => {
                 cartItems: [...state.cartItems.filter(item => item.id !== action.payload.id)]
             }
         case "INCREASE":
+            console.log("increase")
             state.cartItems[state.cartItems.findIndex(item => item.id === action.payload.id)].quantity++
             return {
                 ...state,
@@ -51,10 +52,10 @@ export const CartReducer = (state, action) => {
                 ...sumItems([]),
             }
         case "CLEAR":
-                return {
-                    cartItems: [],
-                    ...sumItems([]),
-                }
+            return {
+                cartItems: [],
+                ...sumItems([]),
+            }
         default:
             return state
 
