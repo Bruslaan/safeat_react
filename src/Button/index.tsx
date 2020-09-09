@@ -4,13 +4,16 @@ import KorbIcon from '../assets/korb.svg'
 
 interface Props {
     clickHandler?: () => void
+    itemCount: number
 }
 
-export const MyButton: React.FC<Props> = ({ clickHandler }) => {
-    return (
-        <button className="mein__button" onClick={clickHandler}>
-            <img src={KorbIcon} alt="" className="warenkorb__icon" />
+export const MyButton: React.FC<Props> = ({ clickHandler, itemCount }) => {
 
-            <span className="mein__button__badge">3</span></button>
+    const noItems = itemCount === 0
+    return (
+        < button className="mein__button" onClick={clickHandler} >
+            <img src={KorbIcon} alt="" className="warenkorb__icon" />
+            <span className="mein__button__badge">{itemCount}</span></button >
+
     )
 }

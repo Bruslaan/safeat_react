@@ -5,10 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import './firebase'
+import CartContextProvider from './Context/shoppingCardStore';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CartContextProvider>
+      <App />
+    </CartContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

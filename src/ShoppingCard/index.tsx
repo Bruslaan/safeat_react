@@ -18,10 +18,10 @@ const ListItem: React.FC<ShoppingItemProps> = ({ item }) => {
     const { increase, decrease, removeProduct } = useContext(CartContext)
 
 
-    const onNumberChange=(number:number)=>{
+    const onNumberChange = (number: number) => {
         console.log("hallo World")
-        number===1 && increase(item)
-        number===-1 && decrease(item)
+        number === 1 && increase(item)
+        number === -1 && decrease(item)
     }
 
     return (
@@ -30,8 +30,12 @@ const ListItem: React.FC<ShoppingItemProps> = ({ item }) => {
                 <h1 className="shoppingcard__text">{item.title}</h1>
                 <h1 className="shoppingcard__text">{item.price} €</h1>
             </div>
+            <div className="shoppingcard__item__buttons">
+                <NumberInput initialCount={item.quantity as number} onChange={onNumberChange} />
+                <button onClick={() => removeProduct(item)}>x</button>
+            </div>
 
-            <NumberInput initialCount={item.quantity as number}  onChange={onNumberChange}/>
+
 
         </div>
     )
@@ -52,7 +56,7 @@ const SumComponent: React.FC<any> = ({ sum }) => {
 
 export const ShoppingCard = () => {
 
-    const { total, cartItems, } = useContext(CartContext)
+    const { total, cartItems, itemCount, itemsImCorb } = useContext(CartContext)
 
     return (
         <div className="shopping__card">
@@ -62,7 +66,7 @@ export const ShoppingCard = () => {
 
             <div className="sticky__button_center sticky__footer">
                 <SumComponent sum={total} />
-                <MyButton />
+                <MyButton itemCount={itemsImCorb} />
             </div>
 
 

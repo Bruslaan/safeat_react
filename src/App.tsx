@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { NavBar } from './Nav'
 import logo from './assets/logo/logoOrange.png'
 import { MainSection } from './MainSection'
@@ -9,7 +9,7 @@ import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
 import Drawer from "react-bottom-drawer";
 import { db } from './firebase'
-import CartContextProvider from './Context/shoppingCardStore'
+import  { CartContext } from './Context/shoppingCardStore'
 import { Food } from './Interfaces/interfaces';
 
 function App() {
@@ -25,6 +25,8 @@ function App() {
   }, []);
 
   const openModal = () => setdrawerIsVisible(true)
+  const { itemsImCorb } = useContext(CartContext)
+
 
   // filter rezept data if categories change
   useEffect(() => {
@@ -36,6 +38,8 @@ function App() {
     }
 
   }, [activeCategorie, foodList, categories])
+
+
 
 
   // fetch rezept data
@@ -83,41 +87,44 @@ function App() {
   }, [])
 
 
+
+
+
   return (
-    <CartContextProvider>
-      <div className="App">
-        <NavBar itemLeft={Logo} itemRight="..." />
-        {/* <div className="spacer"></div> */}
 
-        <div className="">
-          <MainSection
-            leftItems={[
-              <Carousel key="1" />,
-              <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
-              <FoodList foodList={foodListFilter} key="3" />
-            ]}
-            rightItems={[
-              <ShoppingCard key="1" />
-            ]}
-          />
+    <div className="App">
+      <NavBar itemLeft={Logo} itemRight="..." />
+      {/* <div className="spacer"></div> */}
 
-          <Drawer
-            isVisible={drawerIsVisible}
-            onClose={onClose}
-          >
-            <ShoppingCard />
+      <div className="">
+        <MainSection
+          leftItems={[
+            <Carousel key="1" />,
+            <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
+            <FoodList foodList={foodListFilter} key="3" />
+          ]}
+          rightItems={[
+            <ShoppingCard key="1" />
+          ]}
+        />
 
-          </Drawer>
-          <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
-            <MyButton clickHandler={openModal} />
-          </div>
+        <Drawer
+          isVisible={drawerIsVisible}
+          onClose={onClose}
+        >
+          <ShoppingCard />
 
-        </div>
-
+        </Drawer>
+        {itemsImCorb !== 0 && <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
+          <MyButton itemCount={itemsImCorb} clickHandler={openModal} />
+        </div>}
 
       </div>
 
-    </CartContextProvider >
+
+    </div>
+
+
   );
 }
 
