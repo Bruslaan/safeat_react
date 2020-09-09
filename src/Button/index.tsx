@@ -9,7 +9,7 @@ interface Props {
 
 export const MyButton: React.FC<Props> = ({ clickHandler, itemCount }) => {
 
-    const noItems = itemCount === 0
+    // const noItems = itemCount === 0
     return (
         < button className="mein__button" onClick={clickHandler} >
             <img src={KorbIcon} alt="" className="warenkorb__icon" />

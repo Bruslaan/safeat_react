@@ -32,7 +32,7 @@ const ListItem: React.FC<ShoppingItemProps> = ({ item }) => {
             </div>
             <div className="shoppingcard__item__buttons">
                 <NumberInput initialCount={item.quantity as number} onChange={onNumberChange} />
-                <button onClick={() => removeProduct(item)}>x</button>
+                <span onClick={() => removeProduct(item)}>remove</span>
             </div>
 
 

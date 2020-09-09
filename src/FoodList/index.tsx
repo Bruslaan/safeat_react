@@ -1,16 +1,15 @@
 import * as React from 'react';
 import './index.css'
-import { SnapList, SnapItem } from 'react-snaplist-carousel';
+import { SnapList, SnapItem, useScroll } from 'react-snaplist-carousel';
 import { CartContext } from '../Context/shoppingCardStore'
 import { Food } from '../Interfaces/interfaces';
 
 interface FoodCardProps {
-    onClick?: () => void
-
+    onClicked: (id: string) => void
     food: Food
 }
 
-const MyItem: React.FC<FoodCardProps> = ({ onClick, food }) => {
+const MyItem: React.FC<FoodCardProps> = ({ onClicked, food }) => {
     const src_url = "http://lorempixel.com/600/600/food/" + food.imgUrl
     const Image = <img className="food_list_item__img" src={src_url} alt="" />
 
@@ -20,10 +19,10 @@ const MyItem: React.FC<FoodCardProps> = ({ onClick, food }) => {
         return !!cartItems.find((item: Food) => item.id === product.id);
     }
 
-    const product:Food = food
+    const product: Food = food
 
     return (
-        <div className="item" >
+        <div className="item" onClick={() => {onClicked(food.id)}}>
             {/* {children} */}
             {food.imgUrl ? Image : ""}
             <div className="menu__information">
@@ -35,7 +34,7 @@ const MyItem: React.FC<FoodCardProps> = ({ onClick, food }) => {
                 <div className="item__foot">
                     <span>{food.price} €</span>
 
-                  
+
                     {
                         isInCart(product) &&
                         <button
@@ -50,7 +49,7 @@ const MyItem: React.FC<FoodCardProps> = ({ onClick, food }) => {
                             className="btn btn-primary btn-sm">Add to cart</button>
                     }
 
-                    <button onClick={()=>clearCart()}>Delete all</button>
+                    <button onClick={() => clearCart()}>Delete all</button>
 
                 </div>
 
@@ -65,15 +64,26 @@ interface FoodListProps {
 }
 
 export const FoodList: React.FC<FoodListProps> = ({ foodList }) => {
+
+
+    const snapList = React.useRef(null);
+
+    // const visible = useVisibleElements(
+    //   { debounce: 10, ref: snapList },
+    //   ([element]) => element,
+    // );
+    const goToSnapItem = useScroll({ ref: snapList });
+
+
     return (
-        <SnapList direction="vertical" className="list__container">
+        <SnapList ref={snapList} direction="vertical" className="list__container">
 
             {foodList.map((food, index) => {
                 const url = { imgUrl: index + 1 }
                 const Food = { ...url, ...food }
                 return (
                     <SnapItem key={food.id} margin={{ top: '15px', bottom: '15px' }} snapAlign="center">
-                        <MyItem food={Food} ></MyItem>
+                        <MyItem food={Food} onClicked={() => {goToSnapItem(index)}}></MyItem>
                     </SnapItem>
                 )
             })}

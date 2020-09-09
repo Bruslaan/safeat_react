@@ -16,7 +16,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .wrapper {
     border: 1px solid var(--border-color);
-    box-shadow: var(--box-shadow);
+    /* box-shadow: var(--box-shadow); */
     width: 80px;
     height: 40px;
     overflow: hidden;
@@ -37,6 +37,12 @@ input[type=number]::-webkit-outer-spin-button {
     outline: none;
     cursor: pointer;
     /* color: #5f5fce; */
+    
+}
+
+.plusminus:hover{
+    background:rgb(220, 220, 220) !important;
+
 }
 
 .add {
