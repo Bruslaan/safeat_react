@@ -9,7 +9,7 @@ import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
 import Drawer from "react-bottom-drawer";
 import { db } from './firebase'
-
+import CartContextProvider from './Context/shoppingCardStore'
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
@@ -73,35 +73,40 @@ function App() {
 
 
   return (
-    <div className="App">
-      <NavBar itemLeft={Logo} itemRight="..." />
-      {/* <div className="spacer"></div> */}
-      <div className="">
-        <MainSection
-          leftItems={[
-            <Carousel key="1" />,
-            <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
-            <FoodList foodList={foodListFilter} key="3" />
-          ]}
-          rightItems={[
-            <ShoppingCard key="1" />
-          ]}
-        />
+    <CartContextProvider>
+      <div className="App">
+        <NavBar itemLeft={Logo} itemRight="..." />
+        {/* <div className="spacer"></div> */}
 
-        <Drawer
-          isVisible={drawerIsVisible}
-          onClose={onClose}
-        >
-          <ShoppingCard />
+        <div className="">
+          <MainSection
+            leftItems={[
+              <Carousel key="1" />,
+              <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
+              <FoodList foodList={foodListFilter} key="3" />
+            ]}
+            rightItems={[
+              <ShoppingCard key="1" />
+            ]}
+          />
 
-        </Drawer>
-        <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
-          <MyButton clickHandler={openModal} />
+          <Drawer
+            isVisible={drawerIsVisible}
+            onClose={onClose}
+          >
+            <ShoppingCard />
+
+          </Drawer>
+          <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
+            <MyButton clickHandler={openModal} />
+          </div>
+
         </div>
+
 
       </div>
 
-    </div>
+    </CartContextProvider >
   );
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './index.css'
 
-import { SnapList, SnapItem, useVisibleElements, useScroll } from 'react-snaplist-carousel';
+import { SnapList, SnapItem, useScroll } from 'react-snaplist-carousel';
 
 
 
@@ -22,10 +22,10 @@ export const FilterCarousel: React.FC<FilterListProps> = ({ filterList, onActive
 
     const snapList = React.useRef(null);
 
-    const visible = useVisibleElements(
-      { debounce: 10, ref: snapList },
-      ([element]) => element,
-    );
+    // const visible = useVisibleElements(
+    //   { debounce: 10, ref: snapList },
+    //   ([element]) => element,
+    // );
     const goToSnapItem = useScroll({ ref: snapList });
 
 

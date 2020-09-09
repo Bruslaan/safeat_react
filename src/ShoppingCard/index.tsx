@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MyButton } from '../Button'
 import './index.css'
 
 import { NumberInput } from '../NumberInput'
 
-
+import { CartContext } from '../Context/shoppingCardStore'
 
 
 
@@ -39,6 +39,11 @@ const SumComponent: React.FC = () => {
 
 
 export const ShoppingCard = () => {
+
+    const {  total, cartItems,} = useContext(CartContext)
+
+    console.log("Shopping card wurde geladen",  cartItems, total)
+
     return (
         <div className="shopping__card">
             <h1>Deine Karte</h1>
@@ -46,7 +51,7 @@ export const ShoppingCard = () => {
             <ListItem />
             <ListItem />
             <ListItem />
-       
+
 
             <div className="sticky__button_center sticky__footer">
                 <SumComponent />
