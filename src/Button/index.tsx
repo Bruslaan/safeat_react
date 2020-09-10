@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import KorbIcon from '../assets/korb.svg'
-
+import { useHistory } from "react-router-dom"
 interface Props {
     clickHandler?: () => void
     itemCount: number
@@ -20,10 +20,13 @@ export const MyButton: React.FC<Props> = ({ clickHandler, itemCount }) => {
 
 
 export const NormalButton: React.FC<any> = ({ clickHandler }) => {
+    let history = useHistory();
 
+    function handleClick() {
+        history.push("/pay");
+    }
     return (
-        < button className="mein__button" onClick={clickHandler} >
+        <button className="mein__button" onClick={handleClick} >
             Bestellen</button >
-
     )
 }

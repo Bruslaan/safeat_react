@@ -12,6 +12,7 @@ import { db } from './firebase'
 import { CartContext } from './Context/shoppingCardStore'
 import { Food } from './Interfaces/interfaces';
 import PaymentPage from './PaymentPage'
+import { Link } from "react-router-dom"
 
 import {
   BrowserRouter as Router,
@@ -20,12 +21,13 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const Logo = <img src={logo} className="logo" alt="" />
+  const Logo = <Link to="/"><img src={logo} className="logo" alt="" /></Link>
   const [drawerIsVisible, setdrawerIsVisible] = useState(false);
   const [foodList, setfoodList] = useState([])
   const [foodListFilter, setFilterFoodlist] = useState([])
   const [categories, setCategories] = useState([])
   const [activeCategorie, setactiveCategorie] = useState(-1)
+
 
   const onClose = React.useCallback(() => {
     setdrawerIsVisible(false);
@@ -47,6 +49,14 @@ function App() {
   }, [activeCategorie, foodList, categories])
 
 
+
+  useEffect(() => {
+    console.log("%cmount ",  'color:red')
+    return () => {
+      setdrawerIsVisible(false)
+      console.log("%cunmount ",  'color:red')
+    }
+  }, [])
 
 
   // fetch rezept data
@@ -100,10 +110,11 @@ function App() {
   return (
 
     <div className="App">
-      <NavBar itemLeft={Logo} itemRight="..." />
-      {/* <div className="spacer"></div> */}
-
       <Router>
+        <NavBar itemLeft={Logo} itemRight="..." />
+        {/* <div className="spacer"></div> */}
+
+
         <Switch>
           <Route exact path="/">
             <div className="mainPart">
@@ -129,7 +140,7 @@ function App() {
 
             </div>
           </Route>
-          <Route path="/pay">
+          <Route exact path="/pay">
             <PaymentPage />
           </Route>
 
