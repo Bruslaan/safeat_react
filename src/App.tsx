@@ -7,7 +7,7 @@ import { FilterCarousel } from './FilterCarousel'
 import { FoodList } from './FoodList'
 import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
-import Drawer from "react-bottom-drawer";
+import Drawer from "./react-bottom-drawer/dist";
 import { db } from './firebase'
 import { CartContext } from './Context/shoppingCardStore'
 import { Food } from './Interfaces/interfaces';
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom"
 
 import {
   BrowserRouter as Router,
-  Switch,
+  Switch, 
   Route,
 } from "react-router-dom";
 
@@ -51,12 +51,13 @@ function App() {
 
 
   useEffect(() => {
-    console.log("%cmount ",  'color:red')
+    console.log("%c mount ",  'color:red')
     return () => {
-      setdrawerIsVisible(false)
-      console.log("%cunmount ",  'color:red')
+      // setdrawerIsVisible(false)
+      console.log("%c unmount ",  'color:red')
+    
     }
-  }, [])
+  },[])
 
 
   // fetch rezept data
@@ -113,8 +114,6 @@ function App() {
       <Router>
         <NavBar itemLeft={Logo} itemRight="..." />
         {/* <div className="spacer"></div> */}
-
-
         <Switch>
           <Route exact path="/">
             <div className="mainPart">
@@ -131,6 +130,8 @@ function App() {
               <Drawer
                 isVisible={drawerIsVisible}
                 onClose={onClose}
+                unmountOnExit={true}
+                mountOnEnter={true}
               >
                 <ShoppingCard />
               </Drawer>
@@ -143,7 +144,6 @@ function App() {
           <Route exact path="/pay">
             <PaymentPage />
           </Route>
-
         </Switch>
       </Router>
 
