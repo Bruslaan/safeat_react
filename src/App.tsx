@@ -9,8 +9,15 @@ import { ShoppingCard } from './ShoppingCard'
 import { MyButton } from './Button'
 import Drawer from "react-bottom-drawer";
 import { db } from './firebase'
-import  { CartContext } from './Context/shoppingCardStore'
+import { CartContext } from './Context/shoppingCardStore'
 import { Food } from './Interfaces/interfaces';
+import PaymentPage from './PaymentPage'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const Logo = <img src={logo} className="logo" alt="" />
@@ -96,30 +103,40 @@ function App() {
       <NavBar itemLeft={Logo} itemRight="..." />
       {/* <div className="spacer"></div> */}
 
-      <div className="">
-        <MainSection
-          leftItems={[
-            <Carousel key="1" />,
-            <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
-            <FoodList foodList={foodListFilter} key="3" />
-          ]}
-          rightItems={[
-            <ShoppingCard key="1" />
-          ]}
-        />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <div className="mainPart">
+              <MainSection
+                leftItems={[
+                  <Carousel key="1" />,
+                  <FilterCarousel onActiveChange={setactiveCategorie} filterList={categories} key="2" />,
+                  <FoodList foodList={foodListFilter} key="3" />
+                ]}
+                rightItems={[
+                  <ShoppingCard key="1" />
+                ]}
+              />
+              <Drawer
+                isVisible={drawerIsVisible}
+                onClose={onClose}
+              >
+                <ShoppingCard />
+              </Drawer>
+              {itemsImCorb !== 0 && <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
+                <MyButton itemCount={itemsImCorb} clickHandler={openModal} />
+              </div>}
 
-        <Drawer
-          isVisible={drawerIsVisible}
-          onClose={onClose}
-        >
-          <ShoppingCard />
+            </div>
+          </Route>
+          <Route path="/pay">
+            <PaymentPage />
+          </Route>
 
-        </Drawer>
-        {itemsImCorb !== 0 && <div className="sticky__button disable_on_desktop sticky__button__opened" style={{ display: !drawerIsVisible ? 'block' : 'none' }}>
-          <MyButton itemCount={itemsImCorb} clickHandler={openModal} />
-        </div>}
+        </Switch>
+      </Router>
 
-      </div>
+
 
 
     </div>

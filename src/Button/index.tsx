@@ -17,3 +17,13 @@ export const MyButton: React.FC<Props> = ({ clickHandler, itemCount }) => {
 
     )
 }
+
+
+export const NormalButton: React.FC<any> = ({ clickHandler }) => {
+
+    return (
+        < button className="mein__button" onClick={clickHandler} >
+            Bestellen</button >
+
+    )
+}

@@ -13,6 +13,7 @@
 
 }
 
+
 .item > .menu__information {
     display: flex;
     flex-direction: column;
@@ -24,6 +25,7 @@
     box-sizing: border-box;   
     
 }
+
 
 
 .item__foot{
@@ -47,4 +49,10 @@ font-weight: bold;
     .list__container {
         margin: 10px;
     }
+}
+
+
+.btn{
+    cursor: pointer;
+    
 }

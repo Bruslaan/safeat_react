@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { MyButton } from '../Button'
+import { NormalButton } from '../Button'
 import './index.css'
 import { Food } from '../Interfaces/interfaces'
 
@@ -28,7 +28,7 @@ const ListItem: React.FC<ShoppingItemProps> = ({ item }) => {
         <div className="shoppingcard__item">
             <div>
                 <h1 className="shoppingcard__text">{item.title}</h1>
-                <h1 className="shoppingcard__text">{item.price} €</h1>
+                <h1 className="shoppingcard__text">Preis: {item.price} €</h1>
             </div>
             <div className="shoppingcard__item__buttons">
                 <NumberInput initialCount={item.quantity as number} onChange={onNumberChange} />
@@ -56,7 +56,7 @@ const SumComponent: React.FC<any> = ({ sum }) => {
 
 export const ShoppingCard = () => {
 
-    const { total, cartItems, itemCount, itemsImCorb } = useContext(CartContext)
+    const { total, cartItems, itemsImCorb } = useContext(CartContext)
 
     return (
         <div className="shopping__card">
@@ -66,7 +66,7 @@ export const ShoppingCard = () => {
 
             <div className="sticky__button_center sticky__footer">
                 <SumComponent sum={total} />
-                <MyButton itemCount={itemsImCorb} />
+                {itemsImCorb !== 0 && <NormalButton itemCount={itemsImCorb} />}
             </div>
 
 
