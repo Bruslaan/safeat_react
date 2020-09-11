@@ -8,17 +8,23 @@ import * as functions from 'firebase-functions';
 // });
 
 const stripe = require('stripe')('sk_test_51H4wHkAp105LrKrukopj6dzbqJqJg1460nzZPdgeKo8Dl9RnqZy4C3mZNtOvocVb5eVyoNTDfK2390JkW96Gk8Jw004zzRTgdF');
+
 const express = require('express');
 const cors = require("cors")
 const app = express();
 app.use(cors({ origin: true }))
 
 app.get('/secret', async (req: any, res: any) => {
+  const customer = await stripe.customers.create();
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 2999,
+    amount: 12999,
     currency: 'eur',
+    customer: customer.id,
     // Verify your integration in this guide by including this parameter
-    metadata: { integration_check: 'accept_a_payment' },
+    payment_method_types: ['sepa_debit'],
+    // Verify your integration in this guide by including this parameter
+    metadata: {integration_check: 'sepa_debit_accept_a_payment'},
+    // metadata: { integration_check: 'accept_a_payment' },
   });
   res.json({ client_secret: paymentIntent.client_secret });
 });
