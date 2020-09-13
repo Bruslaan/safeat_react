@@ -53,8 +53,11 @@ const SumComponent: React.FC<any> = ({ sum }) => {
 }
 
 
+interface ShoppingCardProps {
+    shouldRenderButton?: boolean
+}
 
-export const ShoppingCard = () => {
+export const ShoppingCard: React.FC<ShoppingCardProps> = ({ shouldRenderButton = true }) => {
 
     const { total, cartItems, itemsImCorb } = useContext(CartContext)
 
@@ -66,7 +69,7 @@ export const ShoppingCard = () => {
 
             <div className="sticky__button_center sticky__footer">
                 <SumComponent sum={total} />
-                {itemsImCorb !== 0 && <NormalButton itemCount={itemsImCorb} />}
+                {shouldRenderButton && itemsImCorb !== 0 && <NormalButton itemCount={itemsImCorb} />}
             </div>
 
 

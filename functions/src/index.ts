@@ -21,7 +21,7 @@ app.get('/secret', async (req: any, res: any) => {
     currency: 'eur',
     customer: customer.id,
     // Verify your integration in this guide by including this parameter
-    payment_method_types: ['sepa_debit'],
+    // payment_method_types: ['sepa_debit'],
     // Verify your integration in this guide by including this parameter
     metadata: {integration_check: 'sepa_debit_accept_a_payment'},
     // metadata: { integration_check: 'accept_a_payment' },
