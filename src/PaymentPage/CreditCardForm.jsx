@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import './CreditCardStyle.css'
 import {
   CardElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+
+
+import { CartContext } from '../Context/shoppingCardStore'
+
 export default function CheckoutForm() {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -13,6 +17,8 @@ export default function CheckoutForm() {
   const [email, setEmail] = useState('');
   const stripe = useStripe();
   const elements = useElements();
+
+  const { total, cartItems } = useContext(CartContext)
 
 
 
@@ -47,17 +53,21 @@ export default function CheckoutForm() {
     setProcessing(true);
 
     const response = await fetch("http://localhost:5001/safeat-9d9d5/us-central1/api/secret", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      // body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
+      body: JSON.stringify({ items: cartItems, total: total })
     })
+
+
+
     const responseJson = await response.json();
     const CLIENT_SECRET = responseJson.client_secret
 
 
-    const payload = await stripe.confirmCardPayment(CLIENT_SECRET, {
+    const payload = null
+    await stripe.confirmCardPayment(CLIENT_SECRET, {
       receipt_email: email,
       payment_method: {
         card: elements.getElement(CardElement)

@@ -32,6 +32,6 @@ function usePreventScroll(enabled, contentWrapperClass) {
         return function () {
             body_scroll_lock_1.enableBodyScroll(scrollableElement);
         };
-    }, [enabled]);
+    }, [enabled, contentWrapperClass]);
 }
 exports.default = usePreventScroll;
